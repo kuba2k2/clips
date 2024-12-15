@@ -30,7 +30,6 @@
 (deffacts startup
 	(state-list)
 )
-
 ;;;****************
 ;;;* STARTUP RULE *
 ;;;****************
@@ -46,6 +45,7 @@
 	))
 )
 
+
 ;;;***************
 ;;;* QUERY RULES *
 ;;;***************
@@ -56,58 +56,58 @@
 
    =>
 
-   (assert (UI-state (title StartQuestion)
+   (assert (UI-state (title "Why do you want a classic?")
                      (relation-asserted why-do-you-want-a-classic)
-                     (response ReliabilityAndConvenience)
-                     (valid-answers ReliabilityAndConvenience IGuessImMakingSomeKindOfStatementAboutSomething NewCarsHaveNoSoul IPreferTheStyle LoveSpeedHateSafety))))
+                     (response reliability_and_convenience)
+                     (valid-answers reliability_and_convenience i_guess_im_making_some_kind_of_statement_about_something new_cars_have_no_soul i_prefer_the_style love_speed_hate_safety))))
 
 (defrule determine-oh-yeah-why-that ""
 
-   (logical (why-do-you-want-a-classic ReliabilityAndConvenience))
+   (logical (why-do-you-want-a-classic reliability_and_convenience))
 
    =>
 
-   (assert (UI-state (title OhYeahWhyIsThat)
+   (assert (UI-state (title "Oh yeah why is that?")
                      (relation-asserted oh-yeah-why-that)
-                     (response IWantToKnowHowCarsWork)
-                     (valid-answers IWantToKnowHowCarsWork ImEroticallyDrawnToTowTrucksAndFreewayShoulders))))
+                     (response i_want_to_know_how_cars_work)
+                     (valid-answers i_want_to_know_how_cars_work im_erotically_drawn_to_tow_trucks_and_freeway_shoulders))))
 
 (defrule determine-so-something-really-simple ""
 
-   (logical (oh-yeah-why-that IWantToKnowHowCarsWork))
+   (logical (oh-yeah-why-that i_want_to_know_how_cars_work))
 
    =>
 
-   (assert (UI-state (title SoSomethingReallySimple)
+   (assert (UI-state (title "So, something really simple?")
                      (relation-asserted so-something-really-simple)
-                     (response SoundsGood)
-                     (valid-answers SoundsGood MoreArchaic NotThatArchaic))))
+                     (response sounds_good)
+                     (valid-answers sounds_good more_archaic not_that_archaic))))
 
 (defrule conclusions-so-something-really-simple-soundsgood ""
 
-   (logical (so-something-really-simple SoundsGood))
+   (logical (so-something-really-simple sounds_good))
 
    =>
 
-   (assert (UI-state (title AnswerCitroen2CV)
+   (assert (UI-state (title "answer: Citroen2cv, VW thing, Willys jeep, Honda civic")
                      (state final))))
 
 (defrule conclusions-so-something-really-simple-morearchaic ""
 
-   (logical (so-something-really-simple MoreArchaic))
+   (logical (so-something-really-simple more_archaic))
 
    =>
 
-   (assert (UI-state (title AnswerFordModelT)
+   (assert (UI-state (title "answer: Ford model t")
                      (state final))))
 
 (defrule conclusions-so-something-really-simple-notthatarchaic ""
 
-   (logical (so-something-really-simple NotThatArchaic))
+   (logical (so-something-really-simple not_that_archaic))
 
    =>
 
-   (assert (UI-state (title AnswerFordModelA)
+   (assert (UI-state (title "answer: Ford model a")
                      (state final))))
 
 
@@ -115,31 +115,31 @@
 
 (defrule determine-ok-should-it-be-pretty-quick ""
 
-   (logical (oh-yeah-why-that ImEroticallyDrawnToTowTrucksAndFreewayShoulders))
+   (logical (oh-yeah-why-that im_erotically_drawn_to_tow_trucks_and_freeway_shoulders))
 
    =>
 
-   (assert (UI-state (title OkShouldItBePrettyQuick)
+   (assert (UI-state (title "Ok, should it be pretty quick?")
                      (relation-asserted ok-should-it-be-pretty-quick)
-                     (response AlsoReallyLovely)
-                     (valid-answers AlsoReallyLovely Yes))))
+                     (response also_really_lovely)
+                     (valid-answers also_really_lovely confirm))))
 
 (defrule conclusions-ok-should-it-be-pretty-quick-lovely ""
 
-   (logical (ok-should-it-be-pretty-quick AlsoReallyLovely))
+   (logical (ok-should-it-be-pretty-quick also_really_lovely))
 
    =>
 
-   (assert (UI-state (title AnswerAlfaRomeoGiuliaSuper)
+   (assert (UI-state (title "answer: Alfa romeo giulia super")
                      (state final))))
 
 (defrule conclusions-ok-should-it-be-pretty-quick-yes ""
 
-   (logical (ok-should-it-be-pretty-quick Yes))
+   (logical (ok-should-it-be-pretty-quick confirm))
 
    =>
 
-   (assert (UI-state (title AnswerLotusElan)
+   (assert (UI-state (title "answer: Lotus elan")
                      (state final))))
 
 
@@ -147,438 +147,438 @@
 
 (defrule determine-great-what-statement ""
 
-   (logical (why-do-you-want-a-classic IGuessImMakingSomeKindOfStatementAboutSomething))
+   (logical (why-do-you-want-a-classic i_guess_im_making_some_kind_of_statement_about_something))
 
    =>
 
-   (assert (UI-state (title GreatWhatStatement)
+   (assert (UI-state (title "Great, what statement?")
                      (relation-asserted great-what-statement)
-                     (response ImReallyRichButLikeToPretendImStillAHippie)
-                     (valid-answers ImReallyRichButLikeToPretendImStillAHippie TheMothershipLeftMeInParis IRunAnNyc-ThemedDinerInLasVegas ILiveDangerouslyAndNaderCanSuckIt IWillOnlyDriveVehiclesWithTwoDistinctLuggageAreas ImAKookAnAmericanKook ITakeDrivingSeriouslyAndHaveTheGlovesToProveIt MyWalletIsOnChain ImARefugeeeFromAnAlternateFutureWithZeppelinsAndShit ILikeBeingPartOfAMassiveAutomotiveSubculture IHatePeopleKnowingWhatIDrive IKindaWantedAMotorcycleButIHaveNoBalance))))
+                     (response im_really_rich_but_like_to_pretend_im_still_a_hippie)
+                     (valid-answers im_really_rich_but_like_to_pretend_im_still_a_hippie the_mothership_left_me_in_paris i_run_an_nyc-_themed_diner_in_las_vegas i_live_dangerously_and_nader_can_suck_it i_will_only_drive_vehicles_with_two_distinct_luggage_areas im_a_kook_an_american_kook i_take_driving_seriously_and_have_the_gloves_to_prove_it my_wallet_is_on_chain im_a_refugeee_from_an_alternate_future_with_zeppelins_and_shit i_like_being_part_of_a_massive_automotive_subculture i_hate_people_knowing_what_i_drive i_kinda_wanted_a_motorcycle_but_i_have_no_balance))))
 
 (defrule determine-is-vw-type-fast-enough ""
 
-   (logical (great-what-statement IWillOnlyDriveVehiclesWithTwoDistinctLuggageAreas))
+   (logical (great-what-statement i_will_only_drive_vehicles_with_two_distinct_luggage_areas))
 
    =>
 
-   (assert (UI-state (title IsVwTypeIIIFastEnoughForYou)
+   (assert (UI-state (title "Is vw type III fast enough for you?")
                      (relation-asserted is-vw-type-fast-enough)
-                     (response Yes)
-                     (valid-answers Yes No))))
+                     (response confirm)
+                     (valid-answers confirm deny))))
 
 (defrule determine-is-porshe-fast-enough ""
 
-   (logical (is-vw-type-fast-enough No))
+   (logical (is-vw-type-fast-enough deny))
 
    =>
 
-   (assert (UI-state (title IsPorshe914FastEnoughForYou)
+   (assert (UI-state (title "Is porshe914 fast enough for you?")
                      (relation-asserted is-porshe-fast-enough)
-                     (response Yes)
-                     (valid-answers Yes No))))
+                     (response confirm)
+                     (valid-answers confirm deny))))
 
 (defrule conclusions-is-vw-type-fast-enough-yes ""
-   (logical (is-vw-type-fast-enough Yes))
+   (logical (is-vw-type-fast-enough confirm))
 
    =>
 
-   (assert (UI-state (title AnswerVwTypeIII)
+   (assert (UI-state (title "answer: vw type III")
                      (state final))))
 
 
 (defrule conclusions-is-porshe-fast-enough-yes ""
-   (logical (is-porshe-fast-enough Yes))
+   (logical (is-porshe-fast-enough confirm))
 
    =>
 
-   (assert (UI-state (title AnswerPorshe914)
+   (assert (UI-state (title "answer: Porshe914")
                      (state final))))
 
 (defrule conclusions-is-porshe-fast-enough-no ""
-   (logical (is-porshe-fast-enough No))
+   (logical (is-porshe-fast-enough deny))
 
    =>
 
-   (assert (UI-state (title AnswerDeTomasoMangusta)
+   (assert (UI-state (title "answer: De Tomaso Mangusta")
                      (state final))))
 
 
 (defrule conclusions-great-what-statement-reallyrich ""
 
-   (logical (great-what-statement ImReallyRichButLikeToPretendImStillAHippie))
+   (logical (great-what-statement im_really_rich_but_like_to_pretend_im_still_a_hippie))
 
    =>
 
-   (assert (UI-state (title AnswerVWType2Microbus)
+   (assert (UI-state (title "answer: VW type2 microbus")
                      (state final))))
 
 
 (defrule conclusions-great-what-statement-mothership ""
 
-   (logical (great-what-statement TheMothershipLeftMeInParis))
+   (logical (great-what-statement the_mothership_left_me_in_paris))
 
    =>
 
-   (assert (UI-state (title AnswerCitreonSM)
+   (assert (UI-state (title "answer: Citroen SM")
                      (state final))))
 
 (defrule conclusions-great-what-statement-dinerinlasvegas ""
 
-   (logical (great-what-statement IRunAnNyc-ThemedDinerInLasVegas))
+   (logical (great-what-statement i_run_an_nyc-_themed_diner_in_las_vegas))
 
    =>
 
-   (assert (UI-state (title AnswerCheckerMarathon)
+   (assert (UI-state (title "answer: Checker Marathon")
                      (state final))))
 
 
 (defrule conclusions-great-what-statement-dangerandnader ""
 
-   (logical (great-what-statement ILiveDangerouslyAndNaderCanSuckIt))
+   (logical (great-what-statement i_live_dangerously_and_nader_can_suck_it))
 
    =>
 
-   (assert (UI-state (title AnswerChevyCorvair)
+   (assert (UI-state (title "answer: Chevy Corvair")
                      (state final))))
 
 
 (defrule conclusions-great-what-statement-americankook ""
 
-   (logical (great-what-statement ImAKookAnAmericanKook))
+   (logical (great-what-statement im_a_kook_an_american_kook))
 
    =>
 
-   (assert (UI-state (title AnswerAmcAmx )
+   (assert (UI-state (title "answer: Amc pacer, Amc gremlin")
                      (state final))))
 
 
 (defrule conclusions-great-what-statement-drivingseriously ""
 
-   (logical (great-what-statement ITakeDrivingSeriouslyAndHaveTheGlovesToProveIt))
+   (logical (great-what-statement i_take_driving_seriously_and_have_the_gloves_to_prove_it))
 
    =>
 
-   (assert (UI-state (title AnswerBmwE30)
+   (assert (UI-state (title "answer: Bmw e30, Porsche 911")
                      (state final))))
 
 
 (defrule conclusions-great-what-statement-refugee ""
 
-   (logical (great-what-statement ImARefugeeeFromAnAlternateFutureWithZeppelinsAndShit))
+   (logical (great-what-statement im_a_refugeee_from_an_alternate_future_with_zeppelins_and_shit))
 
    =>
 
-   (assert (UI-state (title AnswerTatraTb7)
+   (assert (UI-state (title "answer: Tatra TB7")
                      (state final))))
 
 (defrule conclusions-great-what-statement-massivesubculture ""
 
-   (logical (great-what-statement ILikeBeingPartOfAMassiveAutomotiveSubculture))
+   (logical (great-what-statement i_like_being_part_of_a_massive_automotive_subculture))
 
    =>
 
-   (assert (UI-state (title AnswerVWBeetle)
+   (assert (UI-state (title "answer: VW beetle")
                      (state final))))
 
 
 (defrule conclusions-great-what-statement-hatepeople ""
 
-   (logical (great-what-statement IHatePeopleKnowingWhatIDrive))
+   (logical (great-what-statement i_hate_people_knowing_what_i_drive))
 
    =>
 
-   (assert (UI-state (title AnswerSterlingB25)
+   (assert (UI-state (title "answer: Sterling b25, Mitsubishi starion, Isuzu I-MARK")
                      (state final))))
 
 (defrule conclusions-great-what-statement-kindawanted ""
-   (logical (great-what-statement IKindaWantedAMotorcycleButIHaveNoBalance))
+   (logical (great-what-statement i_kinda_wanted_a_motorcycle_but_i_have_no_balance))
 
    =>
 
-   (assert (UI-state (title AnswerLotus7)
+   (assert (UI-state (title "answer: Lotus7")
                      (state final))))
 
 
 (defrule conclusions-great-what-statement-wallet ""
 
-   (logical (great-what-statement MyWalletIsOnChain))
+   (logical (great-what-statement my_wallet_is_on_chain))
 
    =>
 
-   (assert (UI-state (title AnswerFordFalcon)
+   (assert (UI-state (title "answer: Ford falcon, Plymouth valiant, Rambler american")
                      (state final))))
 
 
 
 (defrule determine-what-does-soul-mean-to-you ""
 
-   (logical (why-do-you-want-a-classic NewCarsHaveNoSoul))
+   (logical (why-do-you-want-a-classic new_cars_have_no_soul))
 
    =>
 
-   (assert (UI-state (title WhatDoesSoulMeanToYou)
+   (assert (UI-state (title "What does soul mean to you?")
                      (relation-asserted what-does-soul-mean-to-you)
-                     (response EasyAbilityToDriveOffaPierIntoAnEstuary)
-                     (valid-answers EasyAbilityToDriveOffaPierIntoAnEstuary SynonymForWeird TechnicallyNovel SoulMeansTheCarHadAnHonestJobLikeACopOrCabbie ItMeansRidingInItIsLikeSittingOnASofa ItMeansTheCarIsOftenStarringInMovies ItCouldMeanPureEvil SoulIsTheSpiritsOf43DeadClownsHauntingTheCar SouldIsTheAbilityToGoAMillionMilesWithSuCarbsAndLucasElectrics))))
+                     (response easy_ability_to_drive_offa_pier_into_an_estuary)
+                     (valid-answers easy_ability_to_drive_offa_pier_into_an_estuary synonym_for_weird technically_novel soul_means_the_car_had_an_honest_job_like_a_cop_or_cabbie it_means_riding_in_it_is_like_sitting_on_a_sofa it_means_the_car_is_often_starring_in_movies it_could_mean_pure_evil soul_is_the_spirits_of43_dead_clowns_haunting_the_car sould_is_the_ability_to_go_a_million_miles_with_su_carbs_and_lucas_electrics))))
 
 (defrule conclusions-easy-ability ""
 
-   (logical (what-does-soul-mean-to-you EasyAbilityToDriveOffaPierIntoAnEstuary))
+   (logical (what-does-soul-mean-to-you easy_ability_to_drive_offa_pier_into_an_estuary))
 
    =>
 
-   (assert (UI-state (title AnswerAmphicar)
+   (assert (UI-state (title "answer: Amphicar")
                      (state final))))
 
 
 (defrule conclusions-synonym-weird ""
 
-   (logical (what-does-soul-mean-to-you SynonymForWeird))
+   (logical (what-does-soul-mean-to-you synonym_for_weird))
 
    =>
 
-   (assert (UI-state (title AnswerBMWISetta)
+   (assert (UI-state (title "answer: Bmw Isetta, Messerschmidt Kabinroller")
                      (state final))))
 
 
 (defrule determine-like-what ""
 
-   (logical (what-does-soul-mean-to-you TechnicallyNovel))
+   (logical (what-does-soul-mean-to-you technically_novel))
 
    =>
 
-   (assert (UI-state (title LikeWhat)
+   (assert (UI-state (title "Like what?")
                      (relation-asserted like-what)
-                     (response InsteadOfPistonsSomeMetalHamantaschen)
-                     (valid-answers InsteadOfPistonsSomeMetalHamantaschen CanBurnBookingOil EngineInTheWrongPlace TheyThoughtTheyWereBuildingAPlane))))
+                     (response instead_of_pistons_some_metal_hamantaschen)
+                     (valid-answers instead_of_pistons_some_metal_hamantaschen can_burn_booking_oil engine_in_the_wrong_place they_thought_they_were_building_a_plane))))
 
 (defrule conclusions-intead-of-pistons ""
 
-   (logical (like-what InsteadOfPistonsSomeMetalHamantaschen))
+   (logical (like-what instead_of_pistons_some_metal_hamantaschen))
 
    =>
 
-   (assert (UI-state (title AnswerMazdaRX7)
+   (assert (UI-state (title "answer: Mazda rx7")
                      (state final))))
 
 (defrule conclusions-can-burn-oil ""
 
-   (logical (like-what CanBurnBookingOil))
+   (logical (like-what can_burn_booking_oil))
 
    =>
 
-   (assert (UI-state (title AnswerMercedesBezn300TD)
+   (assert (UI-state (title "answer: Mercedes bezn300 td")
                      (state final))))
 
 (defrule conclusions-engine-in-wrong-place ""
 
-   (logical (like-what EngineInTheWrongPlace))
+   (logical (like-what engine_in_the_wrong_place))
 
    =>
 
-   (assert (UI-state (title AnswerPorsche912)
+   (assert (UI-state (title "answer: porsche912, Renault Alpine")
                      (state final))))
 
 (defrule conclusions-they-thought ""
-   (logical (like-what TheyThoughtTheyWereBuildingAPlane))
+   (logical (like-what they_thought_they_were_building_a_plane))
 
    =>
 
-   (assert (UI-state (title AnswerSaab96)
+   (assert (UI-state (title "answer: Saab96")
                      (state final))))
 
 (defrule conclusions-honest-job-like-cop ""
 
-   (logical (what-does-soul-mean-to-you SoulMeansTheCarHadAnHonestJobLikeACopOrCabbie))
+   (logical (what-does-soul-mean-to-you soul_means_the_car_had_an_honest_job_like_a_cop_or_cabbie))
 
    =>
 
-   (assert (UI-state (title AnswerChevyCaprice)
+   (assert (UI-state (title "answer: Chevy caprice, Dodge Monaco, Ford Crown Vic")
                      (state final))))
 
 
 
 (defrule determine-huge-fast-sofa ""
 
-   (logical (what-does-soul-mean-to-you ItMeansRidingInItIsLikeSittingOnASofa))
+   (logical (what-does-soul-mean-to-you it_means_riding_in_it_is_like_sitting_on_a_sofa))
 
    =>
 
-   (assert (UI-state (title ItMeansRidingInItIsLikeSittingOnASofa)
+   (assert (UI-state (title "It means riding in it is like sitting on a sofa?")
                      (relation-asserted huge-fast-sofa)
-                     (response Yes)
-                     (valid-answers Yes No))))
+                     (response confirm)
+                     (valid-answers confirm deny))))
 
 (defrule conclusions-huge-fast-sofa-yes ""
 
-   (logical (huge-fast-sofa Yes))
+   (logical (huge-fast-sofa confirm))
 
    =>
 
-   (assert (UI-state (title AnswerOldsToronado)
+   (assert (UI-state (title "answer: Olds toronado")
                      (state final))))
 
 (defrule conclusions-huge-fast-sofa-no ""
 
-   (logical (huge-fast-sofa No))
+   (logical (huge-fast-sofa deny))
 
    =>
 
-   (assert (UI-state (title AnswerLincolnTownCar)
+   (assert (UI-state (title "answer: Lincoln town car")
                      (state final))))
 
 
 (defrule conclusions-means-starring-movies ""
 
-   (logical (what-does-soul-mean-to-you ItMeansTheCarIsOftenStarringInMovies))
+   (logical (what-does-soul-mean-to-you it_means_the_car_is_often_starring_in_movies))
 
    =>
 
-   (assert (UI-state (title AnswerDelorean)
+   (assert (UI-state (title "answer: Delorean DMC-12")
                      (state final))))
 
 (defrule conclusions-pure-evil ""
 
-   (logical (what-does-soul-mean-to-you ItCouldMeanPureEvil))
+   (logical (what-does-soul-mean-to-you it_could_mean_pure_evil))
 
    =>
 
-   (assert (UI-state (title AnswerBuickGNX)
+   (assert (UI-state (title "answer: Nuick gnx, Plymouth Fury")
                      (state final))))
 
 (defrule conclusions-dead-clowns ""
 
-   (logical (what-does-soul-mean-to-you SoulIsTheSpiritsOf43DeadClownsHauntingTheCar))
+   (logical (what-does-soul-mean-to-you soul_is_the_spirits_of43_dead_clowns_haunting_the_car))
 
    =>
 
-   (assert (UI-state (title AnswerNashMetro)
+   (assert (UI-state (title "answer: Nash metropolitan")
                      (state final))))
 
 (defrule conclusions-million-miles ""
 
-   (logical (what-does-soul-mean-to-you SouldIsTheAbilityToGoAMillionMilesWithSuCarbsAndLucasElectrics))
+   (logical (what-does-soul-mean-to-you sould_is_the_ability_to_go_a_million_miles_with_su_carbs_and_lucas_electrics))
 
    =>
 
-   (assert (UI-state (title AnswerVolvoP1800)
+   (assert (UI-state (title "answer: Volvo p1800")
                      (state final))))
 
 
 
 (defrule determine-ok-what-kind-of-style ""
 
-   (logical (why-do-you-want-a-classic IPreferTheStyle))
+   (logical (why-do-you-want-a-classic i_prefer_the_style))
 
    =>
 
-   (assert (UI-state (title OKWhatKindOfStyle)
+   (assert (UI-state (title "OK, what kind of style?")
                      (relation-asserted ok-what-kind-of-style)
-                     (response AfricanDictator)
-                     (valid-answers AfricanDictator ILoveCorvairsButLiveInA34ScaleUniverse LikeBuckBogersBosssDad ILoveChromeAndLoudShirts ReallySlowCarsThatLookFast ILoveBrassAndLanters ICanOnlyDriveCarsThatAreMuseumWorthy WorkingClassHeroAlsoBeer ClassicGermanWithATouchOfPedalConfusion))))
+                     (response african_dictator)
+                     (valid-answers african_dictator i_love_corvairs_but_live_in_a34_scale_universe like_buck_bogers_bosss_dad i_love_chrome_and_loud_shirts really_slow_cars_that_look_fast i_love_brass_and_lanters i_can_only_drive_cars_that_are_museum_worthy working_class_hero_also_beer classic_german_with_a_touch_of_pedal_confusion))))
 
 (defrule conclusions-african-dictator ""
 
-   (logical (ok-what-kind-of-style AfricanDictator))
+   (logical (ok-what-kind-of-style african_dictator))
 
    =>
 
-   (assert (UI-state (title AnswerMercedesBenz600)
+   (assert (UI-state (title "answer: Mercedes benz600")
                      (state final))))
 
 (defrule conclusions-scale-34-universe ""
 
-   (logical (ok-what-kind-of-style ILoveCorvairsButLiveInA34ScaleUniverse))
+   (logical (ok-what-kind-of-style i_love_corvairs_but_live_in_a34_scale_universe))
 
    =>
 
-   (assert (UI-state (title AnswerNSUPrinz)
+   (assert (UI-state (title "answer: NSU prinz")
                      (state final))))
 
 (defrule conclusions-like-buck-rogers ""
 
-   (logical (ok-what-kind-of-style LikeBuckBogersBosssDad))
+   (logical (ok-what-kind-of-style like_buck_bogers_bosss_dad))
 
    =>
 
-   (assert (UI-state (title Answer59CadillacEldorado)
+   (assert (UI-state (title "answer: 59 Cadillac eldorado")
                      (state final))))
 
 (defrule conclusions-love-chrome-loud ""
 
-   (logical (ok-what-kind-of-style ILoveChromeAndLoudShirts))
+   (logical (ok-what-kind-of-style i_love_chrome_and_loud_shirts))
 
    =>
 
-   (assert (UI-state (title Answer57ChevyBelAir)
+   (assert (UI-state (title "answer: 57 Chevy bel air")
                      (state final))))
 
 (defrule conclusions-slow-look-fast ""
 
-   (logical (ok-what-kind-of-style ReallySlowCarsThatLookFast))
+   (logical (ok-what-kind-of-style really_slow_cars_that_look_fast))
 
    =>
 
-   (assert (UI-state (title AnswerOpelGT)
+   (assert (UI-state (title "answer: Opel GT, VW karmann ghia, Renault Floride")
                      (state final))))
 
 (defrule conclusions-brass-lanterns ""
 
-   (logical (ok-what-kind-of-style ILoveBrassAndLanters))
+   (logical (ok-what-kind-of-style i_love_brass_and_lanters))
 
    =>
 
-   (assert (UI-state (title AnswerAnythingPreWWII)
+   (assert (UI-state (title "answer: Anything pre WW II, Maybe a packard?")
                      (state final))))
 
 (defrule conclusions-museum-worthy ""
 
-   (logical (ok-what-kind-of-style ICanOnlyDriveCarsThatAreMuseumWorthy))
+   (logical (ok-what-kind-of-style i_can_only_drive_cars_that_are_museum_worthy))
 
    =>
 
-   (assert (UI-state (title AnswerCitroenDS)
+   (assert (UI-state (title "answer: Citroen DS, Lamborghini Miura, Cord 812")
                      (state final))))
 
 (defrule determine-working-class-hero ""
 
-   (logical (ok-what-kind-of-style WorkingClassHeroAlsoBeer))
+   (logical (ok-what-kind-of-style working_class_hero_also_beer))
 
    =>
 
-   (assert (UI-state (title WorkingClassHeroAlsoBeer)
+   (assert (UI-state (title "Working class hero also beer?")
                      (relation-asserted working-class-hero)
-                     (response DoesYourHatSayYoudRatherPushAChevy)
-                     (valid-answers DoesYourHatSayYoudRatherPushAChevy FordMustang))))
+                     (response does_your_hat_say_youd_rather_push_a_chevy)
+                     (valid-answers does_your_hat_say_youd_rather_push_a_chevy ford_mustang))))
 
 (defrule determine-what-do-you-want-from-tires ""
 
-   (logical (working-class-hero FordMustang))
+   (logical (working-class-hero ford_mustang))
 
    =>
 
-   (assert (UI-state (title WhatDoYouWantFromTires)
+   (assert (UI-state (title "What do you want from tires?")
                      (relation-asserted what-do-you-want-from-tires)
-                     (response NoiseAndSmoke)
-                     (valid-answers NoiseAndSmoke NoiseSmokeAndTheTrailerParksUndyingRespect))))
+                     (response noise_and_smoke)
+                     (valid-answers noise_and_smoke noise_smoke_and_the_trailer_parks_undying_respect))))
 
 (defrule conclusions-what-do-you-want-from-tires ""
 
-   (logical (what-do-you-want-from-tires NoiseAndSmoke))
+   (logical (what-do-you-want-from-tires noise_and_smoke))
 
    =>
 
-   (assert (UI-state (title AnswerFordMustangMachI)
+   (assert (UI-state (title "answer: Ford mustang mach i, Chevy c3 corvette")
                      (state final))))
 
 (defrule conclusions-what-do-you-want-from-tires-rest ""
 
-   (logical (what-do-you-want-from-tires NoiseSmokeAndTheTrailerParksUndyingRespect))
+   (logical (what-do-you-want-from-tires noise_smoke_and_the_trailer_parks_undying_respect))
 
    =>
 
-   (assert (UI-state (title AnswerFoxBodyMustang)
+   (assert (UI-state (title "answer: Fox body mustang")
                      (state final))))
 
 
@@ -586,31 +586,31 @@
 
 (defrule determine-hat-says ""
 
-   (logical (working-class-hero DoesYourHatSayYoudRatherPushAChevy))
+   (logical (working-class-hero does_your_hat_say_youd_rather_push_a_chevy))
 
    =>
 
-   (assert (UI-state (title DoesYourHatSayYoudRatherPushAChevy)
+   (assert (UI-state (title "Does your hat say youd rather push a chevy?")
                      (relation-asserted hat-says)
-                     (response SoItDoesFriend)
-                     (valid-answers SoItDoesFriend DammitILostMyHat))))
+                     (response so_it_does_friend)
+                     (valid-answers so_it_does_friend dammit_i_lost_my_hat))))
 
 (defrule conclusions-hat-says-yes ""
 
-   (logical (hat-says SoItDoesFriend))
+   (logical (hat-says so_it_does_friend))
 
    =>
 
-   (assert (UI-state (title AnswerChevyCamaro)
+   (assert (UI-state (title "answer: Chevy camaro")
                      (state final))))
 
 (defrule conclusions-hat-says-no ""
 
-   (logical (hat-says DammitILostMyHat))
+   (logical (hat-says dammit_i_lost_my_hat))
 
    =>
 
-   (assert (UI-state (title AnswerAmcAmx)
+   (assert (UI-state (title "answer: Amc amx")
                      (state final))))
 
 
@@ -620,11 +620,11 @@
 (defrule conclusions-pedal-confusion ""
 
 
-   (logical (ok-what-kind-of-style ClassicGermanWithATouchOfPedalConfusion))
+   (logical (ok-what-kind-of-style classic_german_with_a_touch_of_pedal_confusion))
 
    =>
 
-   (assert (UI-state (title AnswerAudi100)
+   (assert (UI-state (title "answer: Audi100")
                      (state final))))
 
 
@@ -632,151 +632,135 @@
 
 (defrule determine-real-speed-or-just-feels-speedy ""
 
-   (logical (why-do-you-want-a-classic LoveSpeedHateSafety))
+   (logical (why-do-you-want-a-classic love_speed_hate_safety))
 
    =>
 
-   (assert (UI-state (title RealSpeedOrJustFeelsSpeedy)
+   (assert (UI-state (title "Real speed or just feels speedy?")
                      (relation-asserted real-speed-or-just-feels-speedy)
-                     (response ILoveSpeedAndMoney)
-                     (valid-answers ILoveSpeedAndMoney IHaveADeathWish FastAndCheap FakeIsFine))))
+                     (response i_love_speed_and_money)
+                     (valid-answers i_love_speed_and_money i_have_a_death_wish fast_and_cheap fake_is_fine))))
 
 
 
 
 (defrule determine-great-who-are-you ""
 
-   (logical (real-speed-or-just-feels-speedy ILoveSpeedAndMoney))
+   (logical (real-speed-or-just-feels-speedy i_love_speed_and_money))
 
    =>
 
-   (assert (UI-state (title GreatWhoAreYou)
+   (assert (UI-state (title "Great who are you?")
                      (relation-asserted who-are-you)
-                     (response SomeKindOfDukeAndIRally)
-                     (valid-answers SomeKindOfDukeAndIRally MyGoalIsToDriveMYChildhoodBedroomPosters IHaveAWeirdFetishWhereILikePeopleAskingIsItReplica))))
+                     (response some_kind_of_duke_and_i_rally)
+                     (valid-answers some_kind_of_duke_and_i_rally my_goal_is_to_drive_m_y_childhood_bedroom_posters i_have_a_weird_fetish_where_i_like_people_asking_is_it_replica))))
 
 
 (defrule conclusions-kind-duke ""
 
-   (logical (who-are-you SomeKindOfDukeAndIRally))
+   (logical (who-are-you some_kind_of_duke_and_i_rally))
 
    =>
 
-   (assert (UI-state (title AnswerLanciaStratos)
+   (assert (UI-state (title "answer: Lancia stratos")
                      (state final))))
 
 (defrule conclusions-childhood-dream ""
 
-   (logical (who-are-you MyGoalIsToDriveMYChildhoodBedroomPosters))
+   (logical (who-are-you my_goal_is_to_drive_m_y_childhood_bedroom_posters))
 
    =>
 
-   (assert (UI-state (title AnswerLamborghiniCountach)
+   (assert (UI-state (title "answer: Lamborghini Countach, Ferrari 250 GTO")
                      (state final))))
 
 (defrule conclusions-weird-fetish ""
 
-   (logical (who-are-you IHaveAWeirdFetishWhereILikePeopleAskingIsItReplica))
+   (logical (who-are-you i_have_a_weird_fetish_where_i_like_people_asking_is_it_replica))
 
    =>
 
-   (assert (UI-state (title AnswerACCobra)
+   (assert (UI-state (title "answer: AC Cobra, Porsche 356 speedster")
                      (state final))))
 
 
 
 (defrule determine-how-to-go ""
 
-   (logical (real-speed-or-just-feels-speedy IHaveADeathWish))
+   (logical (real-speed-or-just-feels-speedy i_have_a_death_wish))
 
    =>
 
-   (assert (UI-state (title HowDoYouWantToGo)
+   (assert (UI-state (title "How do you want to go?")
                      (relation-asserted how-to-go)
-                     (response ElectrocutedByWiperSwitch)
-                     (valid-answers ElectrocutedByWiperSwitch CrushedByV8InTinySpace BlazeOfGlory CarTree RunOutOfTalentOffCliff))))
+                     (response electrocuted_by_wiper_switch)
+                     (valid-answers electrocuted_by_wiper_switch crushed_by_v8_in_tiny_space blaze_of_glory car_tree run_out_of_talent_off_cliff))))
 
 (defrule conclusions-crushed-by-v8 ""
 
-   (logical (how-to-go CrushedByV8InTinySpace))
+   (logical (how-to-go crushed_by_v8_in_tiny_space))
 
    =>
 
-   (assert (UI-state (title AnswerSunbeamTiger)
+   (assert (UI-state (title "answer: Sunbeam tiger")
                      (state final))))
 
 (defrule conclusions-electrocuted ""
 
-   (logical (how-to-go ElectrocutedByWiperSwitch))
+   (logical (how-to-go electrocuted_by_wiper_switch))
 
    =>
 
-   (assert (UI-state (title AnswerJaguarEType)
+   (assert (UI-state (title "answer: Jaguar e-type")
                      (state final))))
 
 (defrule conclusions-blaze-of-glory ""
 
-   (logical (how-to-go BlazeOfGlory))
+   (logical (how-to-go blaze_of_glory))
 
    =>
 
-   (assert (UI-state (title AnswerFerrariTestarossa)
+   (assert (UI-state (title "answer: Ferrari testarossa")
                      (state final))))
 
 (defrule conclusions-car-tree ""
 
-   (logical (how-to-go CarTree))
+   (logical (how-to-go car_tree))
 
    =>
 
-   (assert (UI-state (title AnswerCamaroIROCZ)
+   (assert (UI-state (title "answer: Camaro iroc-z, Plymouth road runner")
                      (state final))))
 
 (defrule conclusions-run-talent ""
 
-   (logical (how-to-go RunOutOfTalentOffCliff))
+   (logical (how-to-go run_out_of_talent_off_cliff))
 
    =>
 
-   (assert (UI-state (title AnswerPorscheSpyder)
+   (assert (UI-state (title "answer: Porsche spyder")
                      (state final))))
 
 (defrule conclusions-fast-cheap ""
 
-   (logical (real-speed-or-just-feels-speedy FastAndCheap))
+   (logical (real-speed-or-just-feels-speedy fast_and_cheap))
 
    =>
 
-   (assert (UI-state (title AnswerDodgeDMNIGLH)
+   (assert (UI-state (title "answer: Dodge DMNI glh")
                      (state final))))
 
 (defrule conclusions-fake-is-fine ""
 
-   (logical (real-speed-or-just-feels-speedy FakeIsFine))
+   (logical (real-speed-or-just-feels-speedy fake_is_fine))
 
    =>
 
-   (assert (UI-state (title AnswerDatsun510)
+   (assert (UI-state (title "answer: Datsun510, Mini Cooper, Mk1 VW golf GTI, Honda CRX")
                      (state final))))
 
 
 
-
-
-(defrule no-repairs ""
-	(declare (salience -10))
-	(logical
-		(UI-state (id ?id))
-	)
-	(state-list
-		(current ?id)
-	)
-	=>
-	(assert (UI-state
-		(title "Suggested Repair: Take your car to a mechanic.")
-		(state final)
-	))
-)
 
 ;;;*************************
 ;;;* GUI INTERACTION RULES *
