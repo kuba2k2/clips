@@ -224,11 +224,11 @@
 	=>
 	(assert (UI-state (title "What does soul mean to you?")
 							(relation-asserted what-does-soul-mean-to-you)
-							(response easy_ability_to_drive_offa_pier_into_an_estuary)
-							(valid-answers easy_ability_to_drive_offa_pier_into_an_estuary synonym_for_weird technically_novel soul_means_the_car_had_an_honest_job_like_a_cop_or_cabbie it_means_riding_in_it_is_like_sitting_on_a_sofa it_means_the_car_is_often_starring_in_movies it_could_mean_pure_evil soul_is_the_spirits_of43_dead_clowns_haunting_the_car sould_is_the_ability_to_go_a_million_miles_with_su_carbs_and_lucas_electrics))))
+							(response easy_ability_to_drive_off_a_pier_into_an_estuary)
+							(valid-answers easy_ability_to_drive_off_a_pier_into_an_estuary synonym_for_weird technically_novel soul_means_the_car_had_an_honest_job_like_a_cop_or_cabbie it_means_riding_in_it_is_like_sitting_on_a_sofa it_means_the_car_is_often_starring_in_movies it_could_mean_pure_evil soul_is_the_spirits_of_43_dead_clowns_haunting_the_car soul_is_the_ability_to_go_a_million_miles_with_su_carbs_and_lucas_electrics))))
 
 (defrule conclusions-easy-ability ""
-	(logical (what-does-soul-mean-to-you easy_ability_to_drive_offa_pier_into_an_estuary))
+	(logical (what-does-soul-mean-to-you easy_ability_to_drive_off_a_pier_into_an_estuary))
 	=>
 	(assert (UI-state (cars "Amphicar")
 							(state final))))
@@ -245,7 +245,7 @@
 	(assert (UI-state (title "Like what?")
 							(relation-asserted like-what)
 							(response instead_of_pistons_some_metal_hamantaschen)
-							(valid-answers instead_of_pistons_some_metal_hamantaschen can_burn_booking_oil engine_in_the_wrong_place they_thought_they_were_building_a_plane))))
+							(valid-answers instead_of_pistons_some_metal_hamantaschen can_burn_cooking_oil engine_in_the_wrong_place they_thought_they_were_building_a_plane))))
 
 (defrule conclusions-intead-of-pistons ""
 	(logical (like-what instead_of_pistons_some_metal_hamantaschen))
@@ -254,7 +254,7 @@
 							(state final))))
 
 (defrule conclusions-can-burn-oil ""
-	(logical (like-what can_burn_booking_oil))
+	(logical (like-what can_burn_cooking_oil))
 	=>
 	(assert (UI-state (cars "Mercedes-Benz 300 TD")
 							(state final))))
@@ -283,16 +283,16 @@
 	(assert (UI-state (title "It means riding in it is like sitting on a sofa?")
 							(relation-asserted huge-fast-sofa)
 							(response yes)
-							(valid-answers yes no))))
+							(valid-answers yes a_huge_fast_sofa))))
 
 (defrule conclusions-huge-fast-sofa-yes ""
-	(logical (huge-fast-sofa yes))
+	(logical (huge-fast-sofa a_huge_fast_sofa))
 	=>
 	(assert (UI-state (cars "Olds Toronado")
 							(state final))))
 
 (defrule conclusions-huge-fast-sofa-no ""
-	(logical (huge-fast-sofa no))
+	(logical (huge-fast-sofa yes))
 	=>
 	(assert (UI-state (cars "Lincoln Town Car")
 							(state final))))
