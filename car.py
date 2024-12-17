@@ -5,6 +5,14 @@ from clips import Environment
 from clips.facts import TemplateFact
 
 
+def translate_string(s: str) -> str:
+    s = s.replace("_", " ")
+    s = s.replace("im", "I'm")
+    s = s.replace("i ", "I ")
+    s = s[0].upper() + s[1:]
+    return s
+
+
 def show_ui(env: Environment) -> bool:
     # fetch all facts
     facts: list[TemplateFact] = list(env.facts())
@@ -46,6 +54,9 @@ def show_ui(env: Environment) -> bool:
     radio = wx.RadioBox()
     sizer.Add(radio, proportion=1, flag=wx.EXPAND)
 
+    # rename valid responses
+    choices = [translate_string(s) for s in ui_state["valid-answers"]]
+
     # present the UI state
     match ui_state["state"]:
         case "initial":
@@ -61,15 +72,18 @@ def show_ui(env: Environment) -> bool:
     label.Create(page, label=ui_state["title"])
     radio.Create(
         page,
-        choices=ui_state["valid-answers"] or [""],
+        choices=choices or [""],
         style=wx.RA_SPECIFY_ROWS,
     )
     radio.Show(bool(ui_state["valid-answers"]))
-    radio.SetStringSelection(ui_state["response"])
+    radio.SetStringSelection(translate_string(ui_state["response"]))
 
     # show the dialog
     button = wizard.ShowModal()
-    choice = radio.GetStringSelection()
+    if ui_state["valid-answers"]:
+        choice = ui_state["valid-answers"][radio.GetSelection()]
+    else:
+        choice = None
     wizard.DestroyChildren()
     wizard.Destroy()
     # check which button was pressed
