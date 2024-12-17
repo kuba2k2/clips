@@ -31,6 +31,10 @@ def show_ui(env: Environment) -> bool:
     sizer = wx.BoxSizer(wx.VERTICAL)
     page.SetSizer(sizer)
     wizard.ShowPage(page)
+    width, height = wizard.GetSize()
+    wizard.SetSize(640, 480)
+    x, y = wizard.GetPosition()
+    wizard.SetPosition((x - (640 - width) // 2, y - (480 - height) // 2))
     # find Prev/Next buttons
     btn_prev: wx.Button = wizard.FindWindowById(wx.ID_BACKWARD)
     btn_prev.Bind(wx.EVT_BUTTON, lambda *_: wizard.EndModal(wx.ID_BACKWARD))
