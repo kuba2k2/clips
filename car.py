@@ -69,7 +69,11 @@ def show_ui(env: Environment) -> bool:
             btn_prev.Enable(True)
             btn_next.SetLabel("&Next >")
     wizard.SetTitle(app_title[0])
-    label.Create(page, label=ui_state["title"])
+    if ui_state["title"] != "nil":
+        label.Create(page, label=ui_state["title"])
+    else:
+        text = "\n- ".join(("Your classic car could be:",) + ui_state["cars"])
+        label.Create(page, label=text)
     radio.Create(
         page,
         choices=choices or [""],
